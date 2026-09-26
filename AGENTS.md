@@ -31,6 +31,12 @@ mods, YAML configs.
 - Core is **platform-agnostic** (no discord.py in `src/kingdoms/core/`);
   user-facing strings go through **i18n** (never hardcoded); mods declare
   channels/roles via **`ModRegistry`** with **logical role keys**.
+- **UI SDK mandate:** never build `discord.ui` / `discord.Embed` objects
+  directly in a feature — every view, embed or Components V2 layout
+  is built through the SDK in `src/kingdoms/discord/ui`. The rules
+  (bricks, archetypes, navigation-in-buttons, custom IDs, budgets)
+  live in the kingdoms repo
+  [discord-ui skill](https://github.com/merlin-pinpin-org/kingdoms/blob/main/.agents/skills/discord-ui/SKILL.md).
 - Every mod or game provider added here has its documentation updated in
   `kingdoms` (source of truth).
 - Issue templates: `## Objective` / `## Context` / `## Specifications` /
@@ -39,6 +45,11 @@ mods, YAML configs.
   `owner/repo#N` (e.g. `merlin-pinpin-org/kingdoms-infra#78`) — a bare
   `repo#N` renders as plain text; never write it. See CONVENTIONS.md,
   *Documentation is part of the change*.
+- **Enrich the docs and skills proactively** (developer-mandated): when
+  the session's work teaches a rule, pitfall or pattern, update the
+  matching skill page, convention or AGENTS.md entry as part of the
+  change — see the kingdoms CONVENTIONS.md
+  (*Documentation is part of the change*).
 - **Automation mandate:** no one-off commands, for humans or sessions —
   every recurring operation is a committed Makefile target, script or
   workflow, and a useful improvised command is committed ("learned").
